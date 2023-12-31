@@ -1,4 +1,4 @@
-module github.com/Soul12543/subscribe-mail
+module github.com/Soul12543/subscribemail
 
 go 1.21.3
 
