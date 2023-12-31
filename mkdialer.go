@@ -6,7 +6,7 @@ import (
 	"gopkg.in/gomail.v2"
 )
 
-func MakeGMailDialer(username, passwd, message, subject, target string) error {
+func MakeGMailDialer(username, passwd, subject, message, attachment, target string) error {
 	host := "smtp.gmail.com"
 	port := 25
 	mail := gomail.NewMessage()
@@ -15,6 +15,10 @@ func MakeGMailDialer(username, passwd, message, subject, target string) error {
 	mail.SetHeader("Subject", subject)
 
 	mail.SetBody("text/html", message)
+
+	if attachment != "" {
+		mail.Attach(attachment)
+	}
 
 	dial := gomail.NewDialer(
 		host,
