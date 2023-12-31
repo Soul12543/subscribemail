@@ -29,4 +29,5 @@ func MakeGMailDialer(username, passwd, message, subject, target string) error {
 		return err
 	}
 
+	return nil
 }
