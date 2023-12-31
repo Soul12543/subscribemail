@@ -2,12 +2,11 @@ package subscribemail
 
 import (
 	"crypto/tls"
-	"fmt"
 
 	"gopkg.in/gomail.v2"
 )
 
-func MakeGMailDialer(username, passwd, message, subject, target string) {
+func MakeGMailDialer(username, passwd, message, subject, target string) error {
 	host := "smtp.gmail.com"
 	port := 25
 	mail := gomail.NewMessage()
@@ -27,7 +26,7 @@ func MakeGMailDialer(username, passwd, message, subject, target string) {
 	dial.TLSConfig = &tls.Config{InsecureSkipVerify: true}
 
 	if err := dial.DialAndSend(mail); err != nil {
-		fmt.Println("Error!", err)
+		return err
 	}
 
 }
